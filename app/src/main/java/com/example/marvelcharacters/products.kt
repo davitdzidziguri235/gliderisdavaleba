@@ -1,6 +1,7 @@
-package com.example.marvelcharacters
+package com.example.recycleview
 
-data class products (
-    val id :Int,
-    val image :Int,
+data class Image (
+
+
+    val url: String? = ""
 )

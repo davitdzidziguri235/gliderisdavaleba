@@ -1,17 +1,20 @@
 package com.example.marvelcharacters
 
+import android.graphics.drawable.Drawable
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.recycleview.Image
 
-class ProductAdapter(private val products:List<products>): RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(private val products:List<Image>): RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
 
-        val imageView:ImageView=itemView.findViewById(R.id.imageView)
+        val imageView:ImageView=itemView.findViewById(R.id.vImage)
 
 
     }
@@ -24,7 +27,9 @@ class ProductAdapter(private val products:List<products>): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val p =products[position]
 
-        holder.imageView.setImageResource(p.image)
+        Glide.with(holder.imageView.context)
+                .load(p.url)
+                .into(holder.imageView)
     }
 
     override fun getItemCount(): Int = products.size
